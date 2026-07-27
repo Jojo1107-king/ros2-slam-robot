@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="default">
+
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- Sun -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Ground Plane -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- SOFA -->
+    <model name="sofa">
+      <pose>2.0 1.5 0.3 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>0.8 1.8 0.6</size></box></geometry>
+          <material><ambient>0.2 0.3 0.6 1</ambient><diffuse>0.2 0.3 0.6 1</diffuse></material>
+        </visual>
+        <collision name="collision">
+          <geometry><box><size>0.8 1.8 0.6</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- TABLE -->
+    <model name="table">
+      <pose>1.5 -1.5 0.35 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>1.2 0.8 0.7</size></box></geometry>
+          <material><ambient>0.5 0.3 0.1 1</ambient><diffuse>0.5 0.3 0.1 1</diffuse></material>
+        </visual>
+        <collision name="collision">
+          <geometry><box><size>1.2 0.8 0.7</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- CHAIR 1 -->
+    <model name="chair_1">
+      <pose>1.5 -0.7 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+          <material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material>
+        </visual>
+        <collision name="collision">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- CHAIR 2 -->
+    <model name="chair_2">
+      <pose>1.5 -2.3 0.4 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+          <material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material>
+        </visual>
+        <collision name="collision">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ROOM BOUNDARY WALLS -->
+    <model name="wall_north">
+      <pose>0 3.5 1.0 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual"><geometry><box><size>7.0 0.2 2.0</size></box></geometry></visual>
+        <collision name="collision"><geometry><box><size>7.0 0.2 2.0</size></box></geometry></collision>
+      </link>
+    </model>
+
+    <model name="wall_south">
+      <pose>0 -3.5 1.0 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual"><geometry><box><size>7.0 0.2 2.0</size></box></geometry></visual>
+        <collision name="collision"><geometry><box><size>7.0 0.2 2.0</size></box></geometry></collision>
+      </link>
+    </model>
+
+    <model name="wall_east">
+      <pose>3.5 0 1.0 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual"><geometry><box><size>0.2 7.0 2.0</size></box></geometry></visual>
+        <collision name="collision"><geometry><box><size>0.2 7.0 2.0</size></box></geometry></collision>
+      </link>
+    </model>
+
+    <model name="wall_west">
+      <pose>-3.5 0 1.0 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual"><geometry><box><size>0.2 7.0 2.0</size></box></geometry></visual>
+        <collision name="collision"><geometry><box><size>0.2 7.0 2.0</size></box></geometry></collision>
+      </link>
+    </model>
+
+  </world>
+</sdf>
