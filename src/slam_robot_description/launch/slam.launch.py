@@ -35,5 +35,5 @@ def generate_launch_description():
 
     return LaunchDescription([
         slam_toolbox,
-        rviz_node
+        #rviz_node
     ])
